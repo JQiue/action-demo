@@ -16,7 +16,7 @@ jobs:
          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
          ssh-keyscan -H 1.117.21.196 > ~/.ssh/known_hosts
       - name: link remote
-        run: ssh -tt root@1.117.21.196
+        run: ssh -T root@1.117.21.196
       - name: link remote
         run: ls -a
       - run: ls
