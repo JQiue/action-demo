@@ -9,6 +9,6 @@ jobs:
     steps:
     - name: Run build script
       run: |
-        ./build.sh
         ls -a
+        ./build.sh
       shell: bash
