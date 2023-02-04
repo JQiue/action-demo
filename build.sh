@@ -1,1 +1,1 @@
-echo: 'build success'
+echo 'build success'
