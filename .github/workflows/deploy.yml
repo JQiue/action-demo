@@ -28,3 +28,5 @@ jobs:
 #           SSH_KEY_PATH: ${{ github.workspace }}/../private.key
       - name: link remote
         run: ssh root@1.117.21.196
+      - name: link remote
+        run: ls -a
