@@ -4,10 +4,11 @@ on:
     branches:
     - main
 jobs:
-  deploy:
-    name: deploy to staging
+  check-bats-version:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: ping rpapi.jinqiu.wang
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "14"
       - run: ping rpapi.jinsqiu.wang
