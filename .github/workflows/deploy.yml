@@ -1,3 +1,4 @@
+name: deplay
 on:
   push:
     branches:
@@ -5,7 +6,7 @@ on:
 jobs:
   deploy:
     name: deploy to staging
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: ping rpapi.jinqiu.wang
-        run: ping rpapi.jinsqiu.wang
+      - run: ping rpapi.jinsqiu.wang
