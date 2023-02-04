@@ -8,5 +8,6 @@ jobs:
     name: deploy to staging
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: ping rpapi.jinqiu.wang
       - run: ping rpapi.jinsqiu.wang
