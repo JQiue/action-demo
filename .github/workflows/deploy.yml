@@ -7,15 +7,23 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          node-version: "14"
-      - name: Write SSH keys
-        run: |
-         install -m 600 -D /dev/null ~/.ssh/id_rsa
-         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-         ssh-keyscan -H 1.117.21.196 > ~/.ssh/known_hosts
-      - name: link remote
-        run: ssh -T root@1.117.21.196 | pwd
-      - run: pwd
+#       - uses: actions/checkout@v3
+#         with:
+#           node-version: "14"
+#       - name: Write SSH keys
+#         run: |
+#          install -m 600 -D /dev/null ~/.ssh/id_rsa
+#          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+#          ssh-keyscan -H 1.117.21.196 > ~/.ssh/known_hosts
+#       - name: link remote
+#         run: ssh -T root@1.117.21.196 | pwd
+#       - run: pwd
+       - name: executing remote ssh commands using ssh key
+         uses: appleboy/ssh-action@v0.1.7
+         with:
+           host: 1.117.21.196
+           username: root
+           key: ${{ secrets.SSH_PRIVATE_KEY }}
+           port: 22
+           script: whoami
 
