@@ -3,7 +3,8 @@ on:
   push:
     branches:
     - main
-permissions: read-all|write-all
+permissions:
+  contents: read
 jobs:
   build:
     runs-on: ubuntu-18.04
