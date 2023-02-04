@@ -8,6 +8,10 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: "16"
+    - run: npm install -g bats
     - name: Run build script
       run: |
         ls -a
