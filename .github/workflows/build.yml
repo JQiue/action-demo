@@ -16,6 +16,6 @@ jobs:
     - run: npm install -g bats
     - name: Run build script
       run: |
+        echo 'start exec build.sh'
         ls -a
         ./build.sh
-      shell: bash
