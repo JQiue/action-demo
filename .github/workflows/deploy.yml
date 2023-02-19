@@ -27,7 +27,10 @@ jobs:
            port: 22
            script: |
              whoami
-             ls -a
-             cd aurora
-             ls
+             cd timing
+             git log
+             git pull
+             pnpm i
+             git logg
+             pm2 start app
 
