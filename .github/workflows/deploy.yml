@@ -21,16 +21,13 @@ jobs:
        - name: executing remote ssh commands using ssh key
          uses: appleboy/ssh-action@v0.1.7
          with:
-           host: 1.117.21.196
+           host: ${{ vars.HOST }}
            username: root
            key: ${{ secrets.SSH_PRIVATE_KEY }}
            port: 22
            script: |
-             whoami
              cd timing
-             git log
              git pull
              pnpm i
-             git logg
              pm2 start app
 
