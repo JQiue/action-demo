@@ -1,0 +1,26 @@
+name: merge dev
+on:
+  # 推送代码后触发
+  push:
+    branches:
+      - main
+  # 定时任务触发，使用 cron 规则，这里默认一小时执行一次
+  #   schedule:
+  #     - cron: '0 * * * *'
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Merge origin master
+        run: |
+          git config --global user.name 'JQiue'
+          git config --global user.email '861947542@qq.com'
+          git pull --unshallow
+          # 设置上游仓库
+          # git remote add upstream https://github.com/upstream/upstream.git
+          # git fetch upstream
+          git checkout -b dev origin/dev
+          git checkout main
+          git merge --no-edit origin/main
+          git push origin main
