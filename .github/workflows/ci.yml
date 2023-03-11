@@ -22,5 +22,7 @@ jobs:
           # git fetch upstream
           git checkout -t origin/main
           git branch -a
+          git log
+          git remote -a
           # git merge dev
           # git push origin main
