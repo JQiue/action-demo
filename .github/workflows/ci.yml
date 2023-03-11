@@ -3,7 +3,7 @@ on:
   # 推送代码后触发
   push:
     branches:
-      - main
+      - dev
   # 定时任务触发，使用 cron 规则，这里默认一小时执行一次
   #   schedule:
   #     - cron: '0 * * * *'
