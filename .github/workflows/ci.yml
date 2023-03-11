@@ -20,7 +20,7 @@ jobs:
           # 设置上游仓库
           # git remote add upstream https://github.com/upstream/upstream.git
           # git fetch upstream
-          # git checkout dev origin/dev
+          git checkout -t origin/main
           git branch -a
           # git merge dev
           # git push origin main
