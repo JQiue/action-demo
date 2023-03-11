@@ -23,6 +23,6 @@ jobs:
           git checkout -t origin/main
           git branch -a
           git log
-          git remote -a
+          git remote -v
           # git merge dev
           # git push origin main
