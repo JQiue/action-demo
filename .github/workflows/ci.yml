@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-        ref: main
+          ref: main
       - name: Merge origin dev
         run: |
           git config --global user.name github-actions
