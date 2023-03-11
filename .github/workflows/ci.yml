@@ -3,7 +3,7 @@ on:
   # 推送代码后触发
   push:
     branches:
-      - main
+      - dev
   # 定时任务触发，使用 cron 规则，这里默认一小时执行一次
   #   schedule:
   #     - cron: '0 * * * *'
@@ -20,7 +20,8 @@ jobs:
           # 设置上游仓库
           # git remote add upstream https://github.com/upstream/upstream.git
           # git fetch upstream
-          git checkout dev origin/dev
+          git checkout -t origin/main
           git branch -a
-          # git merge dev
-          # git push origin main
+          git merge dev --no-ff
+          git log
+          git push origin main
