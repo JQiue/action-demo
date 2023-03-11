@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          node-version: "16"
+          path: main
       - name: Merge origin dev
         run: |
           git config --global user.name github-actions
@@ -19,7 +19,7 @@ jobs:
           git commit -m "generated"
           git push
           # git pull --unshallow
-          # git branch -a
+          git branch -a
           # git fetch
           # git branch -a
           # git checkout -t origin/main
