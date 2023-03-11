@@ -14,8 +14,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Merge origin dev
         run: |
-          git config --global user.name 'JQiue'
-          git config --global user.email '861947542@qq.com'
+          git config --global user.name github-actions[bot]
+          git config --global user.email github-actions[bot]@users.noreply.github.com
           git pull --unshallow
           # 设置上游仓库
           # git remote add upstream https://github.com/upstream/upstream.git
