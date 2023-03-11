@@ -12,8 +12,8 @@ jobs:
           ref: main
       - name: Merge origin dev
         run: |
-          git config --global user.name github-actions
-          git config --global user.email github-actions@github.com
+          git config --global user.name JQiue
+          git config --global user.email 861947542@qq.com
           date > generated.txt
           git add .
           git commit -m "generated"
