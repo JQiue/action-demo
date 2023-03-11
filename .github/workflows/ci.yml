@@ -12,12 +12,17 @@ jobs:
           node-version: "16"
       - name: Merge origin dev
         run: |
-          git config --global user.name github-actions[bot]
-          git config --global user.email github-actions[bot]@users.noreply.github.com
-          git pull --unshallow
-          git branch -a
-          git fetch
-          git branch -a
-          git checkout -t origin/main
-          git merge dev --no-ff
-          git push origin main
+          git config --global user.name github-actions
+          git config --global user.email github-actions@github.com
+          date > generated.txt
+          git add .
+          git commit -m "generated"
+          git push
+          # git pull --unshallow
+          # git branch -a
+          # git fetch
+          # git branch -a
+          # git checkout -t origin/main
+          # git merge dev --no-ff
+          # echo $(date +%F%n%T) > demo.txt
+          # git push origin main
