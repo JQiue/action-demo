@@ -7,15 +7,14 @@ jobs:
   merge:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          node-version: "16"
       - name: Merge origin dev
         run: |
           git config --global user.name github-actions[bot]
           git config --global user.email github-actions[bot]@users.noreply.github.com
           git pull --unshallow
-          # 设置上游仓库
-          # git remote add upstream https://github.com/upstream/upstream.git
-          # git fetch upstream
           git checkout -t origin/main
           git branch -a
           git merge dev --no-ff
