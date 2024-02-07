@@ -1,0 +1,23 @@
+# 指定 Workflow 名字，是可选的
+name: Basic
+# 触发器事件，可以是单个，或者多个，这里是当 push 时执行
+on: push
+# jobs 组成 整个 Workflow
+jobs:
+  # job 唯一id，这是必须的
+  first_job:
+    name: My First job
+    # 指定 job 的运行环境
+    runs-on: ubuntu-latest
+    # steps 组成整个 job
+    steps:
+      # 该 step 名字
+      - name: Echo Hello World
+        # 运行命令行
+        run: |
+          echo "Hello World"
+  second_job:
+    name: My Second job
+    # 如果指定了依赖，如果依赖的 job 失败，则会跳过所有依赖该 job 的 job
+    needs: first_job
+    runs-on: ubuntu-lastest
