@@ -7,9 +7,7 @@ jobs:
   merge:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          node-version: "16"
+      - uses: actions/checkout@v4
       - name: Merge origin dev
         run: |
           git config --global user.name github-actions[bot]
@@ -21,3 +19,4 @@ jobs:
           git checkout -t origin/main
           git merge dev --no-ff
           git push origin main
+          git push --delete origin dev
