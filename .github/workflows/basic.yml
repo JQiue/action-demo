@@ -24,3 +24,13 @@ jobs:
       - name: Echo World
         # 运行命令行
         run: echo "World"
+
+  third_job:
+    name: My Third job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo Hello World
+        # 运行多个命令行
+        run: |
+          echo "Hello"
+          echo "World"
