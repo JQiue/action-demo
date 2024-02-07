@@ -1,0 +1,18 @@
+name: Use Action
+on: push
+jobs:
+  print_log:
+    runs-on: ubuntu-latest
+    steps:
+      # 运行一段 action，是别人提供的，这里的作用是签出 Git 仓库
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+      - name: Print git log
+        run: git log
+      # 安装 Node.js 的 action，@ 是指定该 action 的版本，with 用于传入参数
+      - name: Install node environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Print Node version
+        run: node -v

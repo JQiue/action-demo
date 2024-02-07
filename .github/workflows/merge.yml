@@ -1,4 +1,4 @@
-name: merge dev
+name: Merge dev
 on:
   push:
     branches:
@@ -7,15 +7,14 @@ jobs:
   merge:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out Git repository
+        uses: actions/checkout@v4
       - name: Merge origin dev
         run: |
           git config --global user.name github-actions[bot]
           git config --global user.email github-actions[bot]@users.noreply.github.com
           git pull --unshallow
-          git branch -a
           git fetch
-          git branch -a
           git checkout -t origin/main
           git merge dev --no-ff
           git push origin main
