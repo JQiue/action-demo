@@ -14,15 +14,13 @@ jobs:
       # 该 step 名字
       - name: Echo Hello
         # 运行命令行
-        run: |
-          echo "Hello"
+        run: echo "Hello"
   second_job:
     name: My Second job
     # 如果指定了依赖，如果依赖的 job 失败，则会跳过所有依赖该 job 的 job
-    # needs: first_job
-    runs-on: ubuntu-lastest
+    needs: first_job
+    runs-on: ubuntu-latest
     steps:
       - name: Echo World
         # 运行命令行
-        run: |
-          echo "World"
+        run: echo "World"
