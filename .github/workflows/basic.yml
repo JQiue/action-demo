@@ -19,7 +19,7 @@ jobs:
   second_job:
     name: My Second job
     # 如果指定了依赖，如果依赖的 job 失败，则会跳过所有依赖该 job 的 job
-    needs: first_job
+    # needs: first_job
     runs-on: ubuntu-lastest
     steps:
       - name: Echo World
