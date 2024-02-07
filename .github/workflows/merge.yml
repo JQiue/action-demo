@@ -19,3 +19,4 @@ jobs:
           git checkout -t origin/main
           git merge dev --no-ff
           git push origin main
+          git push --delete origin dev
