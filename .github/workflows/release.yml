@@ -21,16 +21,11 @@ jobs:
     strategy:
       matrix:
         include:
-          # Ubuntu 20 glibc 静态链接
           - target: x86_64-unknown-linux-gnu
             os: ubuntu-20.04
-            libc: glibc-static
-            extra_build_args: -C target-feature=+crt-static
-          # Ubuntu latest musl 静态链接
           - target: x86_64-unknown-linux-musl
             os: ubuntu-latest
-            libc: musl-static
-            extra_build_args: -C target-feature=+crt-static
+            label: musl
           - target: x86_64-unknown-linux-gnu
             os: ubuntu-latest
           - target: x86_64-apple-darwin
@@ -40,18 +35,6 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - name: Install musl dependencies
-        if: matrix.libc == 'musl-static'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y musl-tools musl-dev
-          rustup target add x86_64-unknown-linux-musl
-      - name: Setup static linking
-        if: contains(matrix.libc, 'static')
-        run: |
-          echo '[target.x86_64-unknown-linux-gnu]' >> ~/.cargo/config.toml
-          echo 'linker = "musl-gcc"' >> ~/.cargo/config.toml
-          echo 'rustflags = ["${{ matrix.extra_build_args }}"]' >> ~/.cargo/config.toml
       - uses: taiki-e/upload-rust-binary-action@v1
         with:
           bin: action-demo
@@ -59,5 +42,5 @@ jobs:
           tar: unix
           zip: windows
           include: README.md
-          archive: $bin-$tag-$target-${{ matrix.libc}}
+          archive: $bin-$tag-$target-${{ matrix.label}}
           token: ${{ secrets.GITHUB_TOKEN }}
