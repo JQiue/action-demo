@@ -48,9 +48,9 @@ jobs:
           mkdir ./target/leancloud
           cp ./target/x86_64-unknown-linux-musl/release/action-demo ./target/leancloud
           cd ./target/leancloud
+          git init
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
-          git init
           git add -A
           git commit -m "Initial commit for LeanCloud deployment"
           git branch -M leancloud
