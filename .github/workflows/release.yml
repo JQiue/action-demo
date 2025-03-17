@@ -54,7 +54,7 @@ jobs:
           git branch -M leancloud
           git push https://${{secrets.PUSH_SECRET}}@github.com/${{github.repository}}.git leancloud:leancloud --force
         env:
-          # GIT_AUTHOR_NAME: github-actions[bot]
-          # GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
-          GIT_COMMITTER_NAME: github-actions[bot]
-          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          # GIT_COMMITTER_NAME: github-actions[bot]
+          # GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
