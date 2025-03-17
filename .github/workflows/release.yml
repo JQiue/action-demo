@@ -22,21 +22,14 @@ jobs:
     strategy:
       matrix:
         include:
-          - target: x86_64-unknown-linux-gnu
-            os: ubuntu-20.04
-            label: x86_64-unknown-linux-gnu-ubuntu-20.04
           - target: x86_64-unknown-linux-musl
             os: ubuntu-latest
-            label: x86_64-unknown-linux-musl
           - target: x86_64-unknown-linux-gnu
             os: ubuntu-latest
-            label: x86_64-unknown-linux-gnu
           - target: x86_64-apple-darwin
             os: macos-latest
-            label: x86_64-apple-darwin
           - target: x86_64-pc-windows-msvc
             os: windows-latest
-            label: x86_64-pc-windows-msvc
     runs-on: ${{ matrix.os }}
     permissions:
       contents: write
@@ -49,12 +42,12 @@ jobs:
           tar: unix
           zip: windows
           include: README.md
-          archive: $bin-$tag-${{ matrix.label}}
+          archive: $bin-$tag-${{ matrix.target}}
           token: ${{ secrets.GITHUB_TOKEN }}
       # - name: Setup tmate session
       #   uses: mxschmitt/action-tmate@v3
-      - name:
-        if: ${{matrix.label == 'x86_64-unknown-linux-musl'}}
+      - name: upload leancloud
+        if: ${{matrix.target == 'x86_64-unknown-linux-musl'}}
         run: |
           mkdir ./target/leancloud
           cp ./target/x86_64-unknown-linux-musl/release/action-demo ./target/leancloud
@@ -63,7 +56,7 @@ jobs:
           git add -A
           git commit -m "Initial commit for LeanCloud deployment"
           git branch -M leancloud
-          git remote add origin https://github.com/${{ github.repository }}.git
+          git remote add origin https://${{secrets.GITHUB_TOKEN}}@github.com/${{ github.repository }}.git
           git push -u origin leancloud:leancloud --force
         env:
           GIT_AUTHOR_NAME: github-actions[bot]
