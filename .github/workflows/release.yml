@@ -43,7 +43,7 @@ jobs:
           archive: $bin-$tag-${{ matrix.target}}
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: upload leancloud
-        if: ${{matrix.target == 'x86_64-unknown-linux-gnu'}}
+        if: ${{matrix.target == 'x86_64-unknown-linux-musl'}}
         run: |
           mkdir ./target/leancloud
           cp ./target/x86_64-unknown-linux-musl/release/action-demo ./target/leancloud
