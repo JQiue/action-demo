@@ -48,7 +48,7 @@ jobs:
         if: ${{matrix.target == 'x86_64-unknown-linux-gnu'}}
         run: |
           mkdir ./target/leancloud
-          cp ./target/x86_64-unknown-linux-musl/release/action-demo ./target/leancloud
+          cp ./target/release/action-demo ./target/leancloud
           cd ./target/leancloud
           git init
           git add -A
