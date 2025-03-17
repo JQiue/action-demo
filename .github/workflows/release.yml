@@ -56,7 +56,7 @@ jobs:
           git add -A
           git commit -m "Initial commit for LeanCloud deployment"
           git branch -M leancloud
-          git remote add origin https://${{secrets.GITHUB_TOKEN}}@github.com/${{ github.repository }}.git
+          git remote add origin https://${{secrets.GITHUB_TOKEN}}@github.com/JQiue/action-demo.git
           git push -u origin leancloud:leancloud --force
         env:
           GIT_AUTHOR_NAME: github-actions[bot]
