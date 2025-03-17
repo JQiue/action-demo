@@ -22,8 +22,8 @@ jobs:
     strategy:
       matrix:
         include:
-          # - target: x86_64-unknown-linux-musl
-          #   os: ubuntu-latest
+          - target: x86_64-unknown-linux-musl
+            os: ubuntu-latest
           - target: x86_64-unknown-linux-gnu
             os: ubuntu-latest
           # - target: x86_64-apple-darwin
@@ -42,13 +42,11 @@ jobs:
           include: README.md
           archive: $bin-$tag-${{ matrix.target}}
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
       - name: upload leancloud
         if: ${{matrix.target == 'x86_64-unknown-linux-gnu'}}
         run: |
           mkdir ./target/leancloud
-          cp ./target/x86_64-unknown-linux-gnu/release/action-demo ./target/leancloud
+          cp ./target/x86_64-unknown-linux-musl/release/action-demo ./target/leancloud
           cd ./target/leancloud
           git init
           git add -A
