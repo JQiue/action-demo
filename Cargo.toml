@@ -2,6 +2,7 @@
 name = "action-demo"
 version = "0.10.6"
 edition = "2021"
+publish = false
 description = ""
 
 [package.metadata.release]
