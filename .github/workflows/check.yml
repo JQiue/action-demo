@@ -1,18 +1,21 @@
 name: Check
+
 on:
   push:
     branches:
       - main
+      - dev
   pull_request:
     branches:
       - main
+      - dev
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  verification:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
