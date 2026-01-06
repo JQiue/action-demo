@@ -5,5 +5,11 @@ edition = "2021"
 publish = false
 description = ""
 
+[profile.test]
+
 [package.metadata.release]
 push = true
+
+[package.metadata.tarpaulin]
+ignore-config = true
+exclude-files = ["src/main.rs"]
